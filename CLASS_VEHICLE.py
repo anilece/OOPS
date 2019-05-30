@@ -1,4 +1,5 @@
-
+#OOPR-Assgn-5
+#Start writing your code here
 '''
 ClassName Vehicle
 Vehicles are of two types – "Two Wheeler" and "Four Wheeler". Each vehicle is identified by vehicle id, type, cost and premium amount.
@@ -29,10 +30,24 @@ class Vehicle:
     def set_premium_amount(self,premium_amount):
             self.__premium_amount=premium_amount
     def calculate_premium(self):
-        
-        if (self.__premium_amount!=None):
+        if (self.__vehicle_type=="Two Wheeler"):
+            premium_amount=0.02
+            self.set_premium_amount(premium_amount)
             self.__premium_amount=(self.__vehicle_cost*self.__premium_amount)
             self.__vehicle_cost+=self.__premium_amount
+
+        elif(self.__vehicle_type=="Four Wheeler"):
+            premium_amount=0.06
+            self.set_premium_amount(premium_amount)
+            self.__premium_amount=(self.__vehicle_cost*self.__premium_amount)
+            self.__vehicle_cost+=self.__premium_amount
+
+        else:
+            print("wrong vehicle type")
+
+        
+        if (self.__premium_amount!=None):
+            self.get_premium_amount()
         else:
             print("wrong vehicle_type")
     def display_vehicle_details(self):
@@ -41,22 +56,9 @@ class Vehicle:
         self.get_vehicle_cost()
         self.get_premium_amount()
 customer=Vehicle()
-s="Two Wheeler"
-customer.set_vehicle_type(s)
-customer.set_vehicle_cost(9000)
+customer.set_vehicle_type("Two Wheeler")
+customer.set_vehicle_cost(105000)
 customer.set_vehicle_id(12)
-if (s=="Two Wheeler"):
-    premium_amount=0.02
-    customer.set_premium_amount(premium_amount)
-    customer.calculate_premium()
-    customer.display_vehicle_details()
-elif(s=="Four Wheeler"):
-    premium_amount=0.06
-    customer.set_premium_amount(premium_amount)
-    customer.calculate_premium()
-    customer.display_vehicle_details()
-else:
-    print("wrong vehicle type")
-    customer.set_premium_amount()
-    customer.calculate_premium()
-    customer.display_vehicle_details()
+
+customer.calculate_premium()
+customer.display_vehicle_details()
